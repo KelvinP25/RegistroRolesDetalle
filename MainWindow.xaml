@@ -7,7 +7,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <StackPanel>
+            <Menu>
+                <MenuItem Header="Registros">
+                    <MenuItem x:Name="RegistroMenuItem" Header="Registro Detalle Roles" Click="RegistroMenuItem_Click"/>
+                </MenuItem>
+            </Menu>
+        </StackPanel>
 
     </Grid>
 </Window>

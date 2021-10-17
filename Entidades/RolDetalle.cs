@@ -19,6 +19,7 @@ namespace RegistroDeOrdenes.Entidades
             Id = 0;
             RolId = 0;
             PermisoId = 0;
+            esAsignado = false;
         }
         public RolDetalle( int rolId, int permisoId, bool esasignado)
         {

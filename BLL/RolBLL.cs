@@ -14,15 +14,22 @@ namespace RegistroDeOrdenes.BLL
     {
         public static bool Guardar(Rol rol)
         {
-            Contexto contexto = new Contexto();
+            if(!Existe(rol.RolId))
+                return Insertar(rol);
+            else
+                return Modificar(rol);
+        }
+        private static bool Insertar(Rol rol)
+        {
             bool paso = false;
+            Contexto contexto = new Contexto();
 
             try
-            {
-                if (contexto.Rol.Add(rol) != null)
-                    paso = contexto.SaveChanges() > 0;
+            { 
+                contexto.Rol.Add(rol);
+                paso = contexto.SaveChanges() > 0;
             }
-            catch
+            catch(Exception)
             {
                 throw;
             }
@@ -33,6 +40,26 @@ namespace RegistroDeOrdenes.BLL
             return paso;
         }
 
+        public static bool Existe(int id)
+        {
+            Contexto contexto = new Contexto();
+            bool encontrado = false;
+
+            try
+            {
+                encontrado = contexto.Rol.Any(r => r.RolId == id);
+            }
+            catch(Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return encontrado;
+        }
         public static bool Modificar(Rol rol)
         {
             Contexto contexto = new Contexto();
@@ -41,15 +68,17 @@ namespace RegistroDeOrdenes.BLL
             try
             {
                 contexto.Database.ExecuteSqlRaw($"Delete FROM RolDetalle where RolId={rol.RolId}");
-                foreach (var anterior in rol.RolDetalle)
+
+                foreach (var item in rol.Detalle)
                 {
-                    contexto.Entry(anterior).State = EntityState.Added;
+                    contexto.Entry(item).State = EntityState.Added;
                 }
+
                 contexto.Entry(rol).State = EntityState.Modified;
-                paso = (contexto.SaveChanges() > 0);
+                paso = contexto.SaveChanges() > 0;
 
             }
-            catch
+            catch(Exception)
             {
                 throw;
             }
@@ -67,12 +96,17 @@ namespace RegistroDeOrdenes.BLL
 
             try
             {
-                var eliminar = contexto.Rol.Find(id);
-                contexto.Entry(eliminar).State = EntityState.Deleted;
+                
+                var rol = RolBLL.Buscar(id);
 
-                paso = (contexto.SaveChanges() > 0);
+                if (rol != null)
+                {
+                    contexto.Rol.Remove(rol);
+                    paso = contexto.SaveChanges() > 0;
+                }
+
             }
-            catch
+            catch (Exception)
             {
                 throw;
             }
@@ -90,9 +124,11 @@ namespace RegistroDeOrdenes.BLL
 
             try
             {
-                rol = contexto.Rol.Include(x => x.RolDetalle).Where(p => p.RolId == id).SingleOrDefault();
+                rol = contexto.Rol.Include(x => x.Detalle).
+                    Where(p => p.RolId == id).
+                    SingleOrDefault();
             }
-            catch
+            catch(Exception)
             {
                 throw;
             }
@@ -103,15 +139,15 @@ namespace RegistroDeOrdenes.BLL
             return rol;
         }
 
-        public static List<Rol> GetList(Expression<Func<Rol, bool>> rol)
+        public static List<Rol> GetList(Expression<Func<Rol, bool>> criterio)
         {
             List<Rol> lista = new List<Rol>();
             Contexto contexto = new Contexto();
             try
             {
-
+                lista = contexto.Rol.Where(criterio).ToList();
             }
-            catch
+            catch(Exception)
             {
 
             }

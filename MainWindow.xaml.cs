@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RegistroDeOrdenes.UI.Registro;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,13 @@ namespace RegistroDeOrdenes
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void RegistroMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            rRol rol = new rRol();
+            rol.Show();
+
         }
     }
 }

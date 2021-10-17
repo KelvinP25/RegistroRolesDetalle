@@ -15,15 +15,6 @@ namespace RegistroDeOrdenes.Entidades
 
         [ForeignKey("RolId")]
 
-        public virtual List<RolDetalle> RolDetalle { get; set; }
-
-        public Rol()
-        {
-            RolId = 0;
-            Descripcion = "";
-
-            RolDetalle = new List<RolDetalle>();
-        }
-
+        public virtual List<RolDetalle> Detalle { get; set; }= new List<RolDetalle>();
     }
 }

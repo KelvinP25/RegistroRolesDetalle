@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WTUDV2Hc+V8vOkRUmzSbPQ1mkOMNwAS9toEbK4j+cVj7QIpdH49+wg+tBnFmSBRN+MNDbM9p2twkuwE1P/DbDQ==",
+  "dgSpecHash": "nCUt2w+AaXQNxhEjyoP7N22dQUGE/K3NkshlXF1kHcR75uv7xa41kOG9900JqcDnzINqH6qaOI9URAPDiAJlDA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Asus\\Documents\\Programacion Aplicada I\\Practicar\\RegistroDeOrdenes\\RegistroDeOrdenes.csproj",
+  "projectFilePath": "C:\\Users\\Asus\\Documents\\Programacion Aplicada I\\Practicar\\RegistroDeOrdenes\\RegistroRolDetalle.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Asus\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
@@ -33,9 +33,7 @@
     "C:\\Users\\Asus\\.nuget\\packages\\system.collections.immutable\\5.0.0\\system.collections.immutable.5.0.0.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.1\\system.diagnostics.diagnosticsource.5.0.1.nupkg.sha512",
-    "C:\\Users\\Asus\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
-    "C:\\Users\\Asus\\.nuget\\packages\\system.text.encodings.web\\5.0.0\\system.text.encodings.web.5.0.0.nupkg.sha512",
-    "C:\\Users\\Asus\\.nuget\\packages\\system.text.json\\5.0.0\\system.text.json.5.0.0.nupkg.sha512"
+    "C:\\Users\\Asus\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512"
   ],
   "logs": []
 }

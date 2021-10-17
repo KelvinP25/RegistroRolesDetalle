@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RegistroDeOrdenes.DAL;
 
-namespace RegistroDeOrdenes.Migrations
+namespace RegistroRolDetalle.Migrations
 {
     [DbContext(typeof(Contexto))]
     partial class ContextoModelSnapshot : ModelSnapshot
@@ -14,49 +14,6 @@ namespace RegistroDeOrdenes.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.10");
-
-            modelBuilder.Entity("RegistroDeOrdenes.Entidades.Permisos", b =>
-                {
-                    b.Property<int>("PermisoId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Descripcion")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Nombre")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("PermisoId");
-
-                    b.ToTable("Permisos");
-
-                    b.HasData(
-                        new
-                        {
-                            PermisoId = 1,
-                            Descripcion = "Permiso para que el trabajador pueda estudiar",
-                            Nombre = "Permiso para estudios"
-                        },
-                        new
-                        {
-                            PermisoId = 2,
-                            Descripcion = "Permiso para que el trabajador descanse",
-                            Nombre = "Permiso por Vacaiones"
-                        },
-                        new
-                        {
-                            PermisoId = 3,
-                            Descripcion = "Permiso para que el trbajador salga en caso de emergencia",
-                            Nombre = "Permiso de emergencia"
-                        },
-                        new
-                        {
-                            PermisoId = 4,
-                            Descripcion = "Permiso para que el trabajador visite a medico en caso de enfermedad",
-                            Nombre = "Permiso de salud"
-                        });
-                });
 
             modelBuilder.Entity("RegistroDeOrdenes.Entidades.Rol", b =>
                 {
@@ -97,10 +54,53 @@ namespace RegistroDeOrdenes.Migrations
                     b.ToTable("RolDetalle");
                 });
 
+            modelBuilder.Entity("RegistroRolDetalle.Entidades.Permiso", b =>
+                {
+                    b.Property<int>("PermisoId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Nombre")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("PermisoId");
+
+                    b.ToTable("Permiso");
+
+                    b.HasData(
+                        new
+                        {
+                            PermisoId = 1,
+                            Descripcion = "Permiso para que el trabajador pueda estudiar",
+                            Nombre = "Permiso para estudios"
+                        },
+                        new
+                        {
+                            PermisoId = 2,
+                            Descripcion = "Permiso para que el trabajador descanse",
+                            Nombre = "Permiso por Vacaiones"
+                        },
+                        new
+                        {
+                            PermisoId = 3,
+                            Descripcion = "Permiso para que el trbajador salga en caso de emergencia",
+                            Nombre = "Permiso de emergencia"
+                        },
+                        new
+                        {
+                            PermisoId = 4,
+                            Descripcion = "Permiso para que el trabajador visite a medico en caso de enfermedad",
+                            Nombre = "Permiso de salud"
+                        });
+                });
+
             modelBuilder.Entity("RegistroDeOrdenes.Entidades.RolDetalle", b =>
                 {
                     b.HasOne("RegistroDeOrdenes.Entidades.Rol", null)
-                        .WithMany("RolDetalle")
+                        .WithMany("Detalle")
                         .HasForeignKey("RolId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -108,7 +108,7 @@ namespace RegistroDeOrdenes.Migrations
 
             modelBuilder.Entity("RegistroDeOrdenes.Entidades.Rol", b =>
                 {
-                    b.Navigation("RolDetalle");
+                    b.Navigation("Detalle");
                 });
 #pragma warning restore 612, 618
         }

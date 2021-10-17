@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using RegistroDeOrdenes.Entidades;
+using RegistroRolDetalle.Entidades;
 
 namespace RegistroDeOrdenes.DAL
 {
@@ -10,34 +11,34 @@ namespace RegistroDeOrdenes.DAL
     {
 
         public DbSet<Rol> Rol { get; set; }
-        public DbSet<Permisos> Permisos { get; set; }
+        public DbSet<Permiso> Permiso { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite(@"Data Source = DATA\CitiesControl.db");
+            optionsBuilder.UseSqlite(@"Data Source = DATA\RoldDetalle.db");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Permisos>().HasData(new Permisos
+            modelBuilder.Entity<Permiso>().HasData(new Permiso
             {
                 PermisoId = 1,
                 Nombre = "Permiso para estudios",
                 Descripcion = "Permiso para que el trabajador pueda estudiar"
             });
-            modelBuilder.Entity<Permisos>().HasData(new Permisos
+            modelBuilder.Entity<Permiso>().HasData(new Permiso
             { 
                 PermisoId = 2,
                 Nombre = "Permiso por Vacaiones",
                 Descripcion = "Permiso para que el trabajador descanse"
             });
-            modelBuilder.Entity<Permisos>().HasData(new Permisos
+            modelBuilder.Entity<Permiso>().HasData(new Permiso
             {
                 PermisoId = 3,
                 Nombre = "Permiso de emergencia",
                 Descripcion = "Permiso para que el trbajador salga en caso de emergencia"
             });
-            modelBuilder.Entity<Permisos>().HasData(new Permisos
+            modelBuilder.Entity<Permiso>().HasData(new Permiso
             {
                 PermisoId = 4,
                 Nombre = "Permiso de salud",
